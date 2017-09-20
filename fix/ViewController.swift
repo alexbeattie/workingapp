@@ -64,20 +64,21 @@ class ViewController: UICollectionViewController {
                     
                     // the array of photos are
                     if let thePhotos = dictionary["photos"] as? [Any] {
-                        listing.photos = thePhotos
+                        listing.photos = thePhotos as? String
+                       
+                        if let theFirst = thePhotos.first {
+                            listing.mainImage = theFirst as? String
+                            print("The first photo is: \(theFirst)")
+                        }
                         print("The photos are: \(thePhotos)")
                     }
                     
                     // prints first photo
-                    if let thePhotos = dictionary["photos"] as? [Any] {
-                        listing.photos = thePhotos
-                        print("The First photo is: \(thePhotos[0])")
-                    }
-   
-                    
+//                    if let thePhotos = dictionary["photos"] as? [Any] {
+//                        listing.photos![0] = thePhotos
+//                        print("The First photo is: \(thePhotos[0])")
+//                    }
                     self.listings?.append(listing)
-                    
-
                 }
              
                 DispatchQueue.main.async {

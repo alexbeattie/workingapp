@@ -33,14 +33,17 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQC-cU-J5E">
                                             <rect key="frame" x="2" y="2" width="196" height="196"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p1904a" translatesAutoresizingMaskIntoConstraints="NO" id="Skj-De-MGQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="196" height="196"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhG-Qr-FMh">
-                                                    <rect key="frame" x="68.5" y="83.5" width="59.5" height="30"/>
+                                                    <rect key="frame" x="68" y="83" width="60" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcC-hl-cRu">
-                                                    <rect key="frame" x="8" y="167" width="172" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcC-hl-cRu">
+                                                    <rect key="frame" x="8" y="167.5" width="180" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -48,9 +51,15 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.23921568630000001" green="0.76078431369999999" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="kcC-hl-cRu" firstAttribute="leading" secondItem="EQC-cU-J5E" secondAttribute="leading" constant="8" id="0lR-pp-iGV"/>
                                                 <constraint firstItem="NhG-Qr-FMh" firstAttribute="centerY" secondItem="EQC-cU-J5E" secondAttribute="centerY" id="8tt-vr-4gu"/>
-                                                <constraint firstAttribute="bottom" secondItem="kcC-hl-cRu" secondAttribute="bottom" constant="8" id="fRf-nv-GnB"/>
+                                                <constraint firstAttribute="trailing" secondItem="Skj-De-MGQ" secondAttribute="trailing" id="8x6-EP-6Xc"/>
+                                                <constraint firstItem="Skj-De-MGQ" firstAttribute="top" secondItem="EQC-cU-J5E" secondAttribute="top" id="Esn-vY-TLj"/>
+                                                <constraint firstAttribute="bottom" secondItem="Skj-De-MGQ" secondAttribute="bottom" id="M9G-Tu-iqM"/>
+                                                <constraint firstItem="Skj-De-MGQ" firstAttribute="leading" secondItem="EQC-cU-J5E" secondAttribute="leading" id="SC1-py-IKa"/>
+                                                <constraint firstAttribute="bottom" secondItem="kcC-hl-cRu" secondAttribute="bottom" constant="8" id="TXB-kg-pgF"/>
                                                 <constraint firstItem="NhG-Qr-FMh" firstAttribute="centerX" secondItem="EQC-cU-J5E" secondAttribute="centerX" id="smy-Hn-RgX"/>
+                                                <constraint firstItem="kcC-hl-cRu" firstAttribute="centerX" secondItem="EQC-cU-J5E" secondAttribute="centerX" id="yxM-Ra-djW"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -63,6 +72,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="subTitleLabel" destination="kcC-hl-cRu" id="wFI-vd-Azg"/>
+                                    <outlet property="thumbNailImageView" destination="Skj-De-MGQ" id="glg-nU-qdx"/>
                                     <outlet property="titleLabel" destination="NhG-Qr-FMh" id="twk-9F-WvO"/>
                                 </connections>
                             </collectionViewCell>
@@ -97,4 +107,7 @@
             <point key="canvasLocation" x="912" y="-91.754122938530742"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="p1904a" width="400" height="225"/>
+    </resources>
 </document>

@@ -16,6 +16,7 @@ class Listing: NSObject {
     var address: String?
     var geoLat: Double?
     var geoLng: Double?
-    var photos: [Any]?
+    var photos: String?
+    var mainImage: String?
 
 }
