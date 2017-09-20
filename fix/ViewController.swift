@@ -14,6 +14,7 @@ class ViewController: UICollectionViewController {
     func fetchListings() {
 
         let url = URL(string: "http://localhost:8888/simplyrets/file.js")!
+//        let url = URL(string: "https://simplyrets:simplyrets@api.simplyrets.com/properties")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error!)
@@ -27,14 +28,56 @@ class ViewController: UICollectionViewController {
                 for dictionary in json as! [[String:Any]] {
                     
                     let listing = Listing()
-                    listing.listDate = dictionary["listDate"] as? String
-                    listing.listPrice = dictionary["listPrice"] as? NSNumber
+                    
+                    // without nil check
+                    // listing.listDate = dictionary["listDate"] as? String
+                    if let theListDate = dictionary["listDate"] as? String {
+                        listing.listDate = theListDate
+                        print("The date listed is: \(theListDate)")
+                    }
+                    
+                    // listing.listPrice = dictionary["listPrice"] as? NSNumber
+                    if let theListPrice = dictionary["listPrice"] as? NSNumber {
+                        listing.listPrice = theListPrice
+                        print("The listed price is: \(theListPrice)")
+                    }
+                    if let theAddress = dictionary["address"] as? [String:Any]  {
+                            if let fullAddress = theAddress["full"] as? String {
+                                listing.address = fullAddress
+                                print("The full address is: \(fullAddress)")
+                            }
+                    }
+                    if let theMlsId = dictionary["mlsId"] as? Int {
+                        listing.mlsId = theMlsId
+                        print("The mlsId is: \(theMlsId)")
+                    }
+                    
+                    if let geo = dictionary["geo"] as? [String:Any]  {
+                        if let theLng = geo["lng"] as? Double {
+                        if let theLat = geo["lat"] as? Double {
+                            listing.geoLat = theLat
+                            listing.geoLng = theLng
+                            print("The coords are: \(theLat),\(theLng)\n")
+                            }
+                        }
+                    }
+                    
+                    // the array of photos are
+                    if let thePhotos = dictionary["photos"] as? [Any] {
+                        listing.photos = thePhotos
+                        print("The photos are: \(thePhotos)")
+                    }
+                    
+                    // prints first photo
+                    if let thePhotos = dictionary["photos"] as? [Any] {
+                        listing.photos = thePhotos
+                        print("The First photo is: \(thePhotos[0])")
+                    }
+   
                     
                     self.listings?.append(listing)
                     
-                    
-                    
-//                    print("\(listing.listDate) + \(listing.listPrice)")
+
                 }
              
                 DispatchQueue.main.async {
@@ -60,11 +103,7 @@ class ViewController: UICollectionViewController {
 }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        /*
-         if let count = videos?.count {
-         return count
-         } means same as below */
-//        listings?.sorted(by: { $0.listDate > $1.listDate})
+
         return listings?.count ?? 0
         
         
