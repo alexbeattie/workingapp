@@ -11,10 +11,11 @@ import UIKit
 class ViewController: UICollectionViewController {
 
     var listings:[Listing]?
+    
     func fetchListings() {
 
-        let url = URL(string: "http://localhost:8888/simplyrets/file.js")!
-//        let url = URL(string: "https://simplyrets:simplyrets@api.simplyrets.com/properties")!
+//        let url = URL(string: "http://localhost:8888/simplyrets/file.js")!
+        let url = URL(string: "https://simplyrets:simplyrets@api.simplyrets.com/properties")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error!)
@@ -73,11 +74,7 @@ class ViewController: UICollectionViewController {
                         print("The photos are: \(thePhotos)")
                     }
                     
-                    // prints first photo
-//                    if let thePhotos = dictionary["photos"] as? [Any] {
-//                        listing.photos![0] = thePhotos
-//                        print("The First photo is: \(thePhotos[0])")
-//                    }
+
                     self.listings?.append(listing)
                 }
              
@@ -119,9 +116,23 @@ class ViewController: UICollectionViewController {
             
             cell.listing = listing
         }
-        
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC" {
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.listing = sender as? Listing
+        }
+    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let listing = listings![indexPath.item]
+        performSegue(withIdentifier: "toDetailVC", sender: listing)
+    }
+
+
+   
+    
 }
 
 

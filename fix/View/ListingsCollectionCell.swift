@@ -34,6 +34,8 @@ class ListingsCollectionCell: UICollectionViewCell {
                 if let thumnailImageName = listing.mainImage {
                     thumbNailImageView.image = UIImage(named: thumnailImageName)
                 }
+                
+                
             }
             
         }
